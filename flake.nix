@@ -35,8 +35,13 @@
       ];
       inherit systems;
 
-      perSystem = {pkgs, ...}: {
+      perSystem = {
+        pkgs,
+        config,
+        ...
+      }: {
         formatter = pkgs.alejandra;
+        packages.default = config.packages.seshat;
       };
       flake = {
         inherit flakeModules;
